@@ -137,7 +137,7 @@ function TokenGenerator() {
               variant="contained"
               color="primary"
               onClick={handleGenerate}
-              sx={{ mr: 2, px: 4, py: 1.5 }}
+              sx={{ mr: 2, px: 4, py: 1.5 ,margin:2}}
               startIcon={<CheckCircle />}
             >
               Generate
