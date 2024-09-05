@@ -3,6 +3,7 @@ import { useTokenGenerator } from './TokenGeneratorContext';
 import { TextField, Button, Grid, Typography, Box, Card, CardContent, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { CheckCircle } from '@mui/icons-material';
 import Confetti from 'react-confetti';
+import './TokenGenerator.css';
 
 function TokenGenerator() {
   const { inputs, handleChange, generateTokens, clearTokens, generatedBlueTokens, generatedRedTokens, blueTokensPerRow, redTokensPerRow, errors } = useTokenGenerator();
@@ -35,8 +36,6 @@ function TokenGenerator() {
   const handleCancelClear = () => {
     setConfirmClearOpen(false);
   };
-
-  
 
   return (
     <Box sx={{ p: 4, maxWidth: '800px', mx: 'auto' }}>
@@ -181,27 +180,29 @@ function TokenGenerator() {
               Go ahead and generate some tokens to display here.
             </Typography>
           ) : (
-            <Grid container spacing={2}>
-              {generatedBlueTokens.map((token, index) => (
-                <Grid item xs={12 / blueTokensPerRow} key={index}>
-                  <Typography
-                    variant="body1"
-                    align="center"
-                    sx={{
-                      p: 1,
-                      border: '1px solid #1976d2',
-                      borderRadius: 2,
-                      boxShadow: 3,
-                      bgcolor: '#e3f2fd',
-                      fontWeight: 600,
-                      color: '#1976d2'
-                    }}
-                  >
-                    {token}
-                  </Typography>
-                </Grid>
-              ))}
-            </Grid>
+            <Box sx={{ overflowX: 'auto', scrollbarWidth: 'thin', scrollbarColor: '#1976d2 #e3f2fd' }}>
+              <Grid container spacing={2} sx={{ width: blueTokensPerRow * 120 }}> 
+                {generatedBlueTokens.map((token, index) => (
+                  <Grid item xs={12 / blueTokensPerRow} key={index}>
+                    <Typography
+                      variant="body1"
+                      align="center"
+                      sx={{
+                        p: 1,
+                        border: '1px solid #1976d2',
+                        borderRadius: 2,
+                        boxShadow: 3,
+                        bgcolor: '#e3f2fd',
+                        fontWeight: 600,
+                        color: '#1976d2'
+                      }}
+                    >
+                      {token}
+                    </Typography>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
           )}
         </CardContent>
       </Card>
@@ -216,27 +217,29 @@ function TokenGenerator() {
               Go ahead and generate some tokens to display here.
             </Typography>
           ) : (
-            <Grid container spacing={2}>
-              {generatedRedTokens.map((token, index) => (
-                <Grid item xs={12 / redTokensPerRow} key={index}>
-                  <Typography
-                    variant="body1"
-                    align="center"
-                    sx={{
-                      p: 1,
-                      border: '1px solid #d32f2f',
-                      borderRadius: 2,
-                      boxShadow: 3,
-                      bgcolor: '#ffebee',
-                      fontWeight: 600,
-                      color: '#d32f2f'
-                    }}
-                  >
-                    {token}
-                  </Typography>
-                </Grid>
-              ))}
-            </Grid>
+            <Box sx={{ overflowX: 'auto', scrollbarWidth: 'thin', scrollbarColor: '#d32f2f #ffebee' }}>
+              <Grid container spacing={2} sx={{ width: redTokensPerRow * 120 }}>
+                {generatedRedTokens.map((token, index) => (
+                  <Grid item xs={12 / redTokensPerRow} key={index}>
+                    <Typography
+                      variant="body1"
+                      align="center"
+                      sx={{
+                        p: 1,
+                        border: '1px solid #d32f2f',
+                        borderRadius: 2,
+                        boxShadow: 3,
+                        bgcolor: '#ffebee',
+                        fontWeight: 600,
+                        color: '#d32f2f'
+                      }}
+                    >
+                      {token}
+                    </Typography>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
           )}
         </CardContent>
       </Card>
@@ -245,4 +248,3 @@ function TokenGenerator() {
 }
 
 export default TokenGenerator;
-
